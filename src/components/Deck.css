@@ -1,0 +1,12 @@
+#cards-deck{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+#countdown{
+    color: blueviolet;
+    font-size: larger;
+    font-weight: 700;
+}

@@ -1,0 +1,34 @@
+#deck-container{
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+}
+#deck-flex{
+    width: 30vw;
+    display: flex;
+    justify-content: center;
+}
+#players-input{
+    margin-top: 50px;
+    direction: rtl;
+    display: flex;
+    width: 300px;
+    justify-content: space-evenly;
+}
+#players-input input{
+    border-radius: 50px;
+    height: 40px;
+    padding-inline-start: 25px;
+}
+#players-input button{
+    border-radius: 25px;
+    cursor: pointer;
+}
+#players-input button:hover{
+    opacity: 0.8;
+}
+#form-container{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
