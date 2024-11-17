@@ -32,3 +32,23 @@
     display: flex;
     justify-content: center;
 }
+#popup{
+    height:0px;
+    width: 200px;
+    transition: height 3s;
+    position: absolute;
+    top:50%;
+    left: 35%;
+    z-index: 100;
+    background-color: rgba(8, 99, 99, 0.818);
+    border-radius: 10px;
+    display: none;
+    color: darkorange;
+}
+.change {
+    height: 100px !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    }

@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import Card from "./Card";
 import "./Deck.css";
+import { DeckContext } from "../context/context";
 const socket = io("http://localhost:3500");
 
 function Deck(props) {
-  const [deckInfo, setDeckInfo] = useState([]);
   const [isStarted, setIsStarted] = useState(false);
   const [seconds, setSeconds] = useState(3);
+  const { deckInfo, setDeckInfo } = useContext(DeckContext);
   useEffect(() => {
     socket.on("deckState", (deck) => {
       setDeckInfo(deck);
@@ -16,24 +17,23 @@ function Deck(props) {
     return () => socket.off("deckState");
   }, []);
   useEffect(() => {
-    if (!isStarted && props.players.length === 1) {
-      //change to 2 players
-      let interval = setInterval(() => {
-        setSeconds((prev) => prev - 1);
-      }, 1000);
-      const timeout = setTimeout(() => {
-        setIsStarted(true);
-        clearInterval(interval);
-      }, 3000);
-      return () => {
-        clearInterval(interval);
-        clearTimeout(timeout);
-      };
-    }
-  }, [props.players.length, isStarted]);
-  useEffect(() => {
-    socket.emit("getFirstMove");
-  }, [isStarted]);
+    socket.on("startCountdown", (startTime) => {
+      const interval = setInterval(() => {
+        const remaining = Math.ceil((startTime - Date.now()) / 1000);
+        setSeconds(remaining);
+
+        if (remaining <= 0) {
+          clearInterval(interval); // Stop countdown
+        }
+      }, 100);
+
+      return () => clearInterval(interval);
+    });
+    socket.on("startGame", () => {
+      setIsStarted(true);
+    });
+  }, []);
+
   return (
     <div id="cards-deck">
       <h2>קופה</h2>

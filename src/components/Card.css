@@ -15,6 +15,9 @@
     transform-origin: center;
     text-align: center;
 }
+.circle-item:hover{
+    cursor: pointer;
+}
 #card-back{
     color: blue;
     font-weight: 500;

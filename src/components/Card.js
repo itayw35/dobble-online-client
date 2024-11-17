@@ -21,7 +21,11 @@ function Card(props, { radius = 150 }) {
               className="circle-item"
               style={{ transform: `translate(${x}px, ${y}px)` }}
             >
-              <img src={image.src} alt={image.alt} />
+              <img
+                src={image.src}
+                alt={image.alt}
+                onClick={props.onclick ? props.onclick : null}
+              />
             </div>
           );
         })
