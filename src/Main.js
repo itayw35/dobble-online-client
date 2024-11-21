@@ -14,7 +14,6 @@ function Main() {
   const [playerCard, setPlayerCard] = useState([]);
   const [deckInfo, setDeckInfo] = useState([]);
   const [isPopup, setIsPopup] = useState(false);
-  const [clickNum, setClickNum] = useState(0);
   const [message, setMessage] = useState("");
 
   const addPlayer = async (e) => {
@@ -27,11 +26,11 @@ function Main() {
     if (
       deckInfo.find((image) => {
         return image.src === chosenImage;
-      }) &&
-      clickNum === 0
-    )
-      setClickNum((prev) => prev + 1);
-    socket.emit("updateScore");
+      })
+    ) {
+      socket.emit("updateScore");
+      socket.emit("nextCard");
+    }
   };
   useEffect(() => {
     socket.on("playersState", (playersList) => {
@@ -43,6 +42,18 @@ function Main() {
         setIsPopup(false);
       }, 4000);
       setMessage(updateMessage);
+    });
+    socket.on("winner", (winner) => {
+      setIsPopup(true);
+      setMessage(
+        winner.length === 1
+          ? `${winner.name} ניצח!`
+          : `${winner
+              .forEach((w) => {
+                return "ו" + w.name;
+              })
+              .slice(1)} ניצחו!`
+      );
     });
     socket.emit("getPlayers");
   });
