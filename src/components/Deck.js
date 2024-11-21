@@ -36,7 +36,6 @@ function Deck(props) {
 
   return (
     <div id="cards-deck">
-      <h2>קופה</h2>
       {!isStarted ? (
         <div>
           <span id="countdown">{seconds}</span>

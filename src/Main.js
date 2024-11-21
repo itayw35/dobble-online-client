@@ -81,7 +81,10 @@ function Main() {
       ) : (
         <div>
           <header>
-            <Players players={players} />
+            <div id="game-header">
+              <h2>קופה</h2>
+              <Players players={players} />
+            </div>
           </header>
           <DeckContext.Provider value={{ deckInfo, setDeckInfo }}>
             <div id="deck-container">

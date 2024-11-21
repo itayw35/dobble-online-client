@@ -7,6 +7,7 @@
     width: 30vw;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 #players-input{
     margin-top: 50px;
@@ -37,13 +38,14 @@
     width: 200px;
     transition: height 3s;
     position: absolute;
-    top:50%;
+    top: 65%;
     left: 35%;
     z-index: 100;
-    background-color: rgba(8, 99, 99, 0.818);
+    background-color: rgb(248, 224, 187);
     border-radius: 10px;
     display: none;
-    color: darkorange;
+    color: green;
+    font-family: Copperplate, Papyrus, fantasy;
 }
 .change {
     height: 100px !important;
@@ -51,4 +53,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    }
+    header{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+    }
+    #game-header{
+        display: flex;
+        width: 75%;
+        justify-content: space-between;
     }
