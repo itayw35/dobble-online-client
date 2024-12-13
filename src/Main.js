@@ -5,7 +5,7 @@ import Card from "./components/Card";
 import { io } from "socket.io-client";
 import { DeckContext } from "./context/context";
 import "./Main.css";
-const socket = io("http://localhost:3500");
+const socket = io("https://dobble-online-28c94078ff2e.herokuapp.com");
 
 function Main() {
   const [isConnected, setIsConnected] = useState(false);

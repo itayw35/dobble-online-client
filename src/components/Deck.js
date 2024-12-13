@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import Card from "./Card";
 import "./Deck.css";
 import { DeckContext } from "../context/context";
-const socket = io("http://localhost:3500");
+const socket = io("https://dobble-online-28c94078ff2e.herokuapp.com");
 
 function Deck(props) {
   const [isStarted, setIsStarted] = useState(false);
