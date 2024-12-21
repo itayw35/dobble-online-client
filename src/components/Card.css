@@ -11,7 +11,7 @@
     padding: 50px;
 
 }
-@media screen and(max-width : 768px){
+@media screen and (max-width : 768px){
     .circle-container{
         height: 250px !important;
         width: 250px !important;
