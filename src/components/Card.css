@@ -13,8 +13,9 @@
 }
 @media screen and (max-width : 768px){
     .circle-container{
-        height: 250px !important;
-        width: 250px !important;
+        height: 180px !important;
+        width: 180px !important;
+        padding: 90px !important;
     }
 }
 .circle-item{
