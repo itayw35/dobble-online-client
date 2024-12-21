@@ -3,6 +3,11 @@
     display: flex;
     justify-content: flex-start;
 }
+@media only screen and(max-width : 768px) {
+    #deck-container{
+        flex-direction: column;
+    }
+}
 #deck-flex{
     width: 30vw;
     display: flex;
@@ -15,6 +20,7 @@
     display: flex;
     width: 300px;
     justify-content: space-evenly;
+    font-size: 16px;
 }
 #players-input input{
     border-radius: 50px;
