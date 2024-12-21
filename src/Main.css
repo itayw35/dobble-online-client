@@ -3,9 +3,11 @@
     display: flex;
     justify-content: flex-start;
 }
-@media screen and(max-width : 768px) {
+@media screen and (max-width : 768px) {
     #deck-container{
+        color: aqua;
         flex-direction: column;
+        align-items: center;
     }
 }
 #deck-flex{
