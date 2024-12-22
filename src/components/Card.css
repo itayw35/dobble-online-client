@@ -11,6 +11,14 @@
     padding: 50px;
 
 }
+@media screen and (max-width : 1024px){
+    .circle-container{
+        height: 120px !important;
+        width: 120px !important;
+        padding: 85px !important;
+        margin: 60px !important;
+    }
+}
 @media screen and (max-width : 768px){
     .circle-container{
         height: 180px !important;

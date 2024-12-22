@@ -15,6 +15,11 @@
     justify-content: center;
     align-items: center;
 }
+@media (min-width : 481px) and (max-width : 1024px) {
+    #deck-flex{
+        width: auto;
+    }
+}
 #players-input{
     margin-top: 50px;
     direction: rtl;
