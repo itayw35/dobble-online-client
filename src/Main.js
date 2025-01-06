@@ -55,8 +55,9 @@ function Main() {
               })
               .slice(1)} ניצחו!`
       );
+      setIsStarted(false);
     });
-    setIsStarted(false);
+    socket.emit("getPlayers");
   });
   useEffect(() => {
     socket.on("drawnCard", (newCard) => {

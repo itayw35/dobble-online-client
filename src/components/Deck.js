@@ -17,7 +17,6 @@ function Deck(props) {
   }, []);
   useEffect(() => {
     socket.on("startCountdown", (startTime) => {
-      socket.emit("getPlayers");
       const interval = setInterval(() => {
         const remaining = Math.ceil((startTime - Date.now()) / 1000);
         setSeconds(remaining);
