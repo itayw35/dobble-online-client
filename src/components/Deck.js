@@ -6,7 +6,6 @@ import { DeckContext } from "../context/context";
 const socket = io("https://dobble-online-28c94078ff2e.herokuapp.com");
 
 function Deck(props) {
-  const [isStarted, setIsStarted] = useState(false);
   const [seconds, setSeconds] = useState(3);
   const { deckInfo, setDeckInfo } = useContext(DeckContext);
   useEffect(() => {
@@ -18,6 +17,7 @@ function Deck(props) {
   }, []);
   useEffect(() => {
     socket.on("startCountdown", (startTime) => {
+      socket.emit("getPlayers");
       const interval = setInterval(() => {
         const remaining = Math.ceil((startTime - Date.now()) / 1000);
         setSeconds(remaining);
@@ -30,13 +30,13 @@ function Deck(props) {
       return () => clearInterval(interval);
     });
     socket.on("startGame", () => {
-      setIsStarted(true);
+      props.setIsStarted(true);
     });
   }, []);
 
   return (
     <div id="cards-deck">
-      {!isStarted ? (
+      {!props.isStarted ? (
         <div>
           <span id="countdown">{seconds}</span>
           <Card images={[]} />

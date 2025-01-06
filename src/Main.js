@@ -14,6 +14,7 @@ function Main() {
   const [playerCard, setPlayerCard] = useState([]);
   const [deckInfo, setDeckInfo] = useState([]);
   const [isPopup, setIsPopup] = useState(false);
+  const [isStarted, setIsStarted] = useState(false);
   const [message, setMessage] = useState("");
 
   const addPlayer = async (e) => {
@@ -55,7 +56,7 @@ function Main() {
               .slice(1)} ניצחו!`
       );
     });
-    socket.emit("getPlayers");
+    setIsStarted(false);
   });
   useEffect(() => {
     socket.on("drawnCard", (newCard) => {
@@ -89,7 +90,11 @@ function Main() {
           <DeckContext.Provider value={{ deckInfo, setDeckInfo }}>
             <div id="deck-container">
               <div id="deck-flex">
-                <Deck players={players} />
+                <Deck
+                  players={players}
+                  isStarted={isStarted}
+                  setIsStarted={setIsStarted}
+                />
               </div>
               {playerCard.length > 0 ? (
                 <Card images={playerCard} onclick={(e) => checkComparison(e)} />
